@@ -11,7 +11,7 @@
  Target Server Version : 50728
  File Encoding         : 65001
 
- Date: 26/11/2020 17:15:06
+ Date: 27/11/2020 09:52:22
 */
 
 SET NAMES utf8mb4;
@@ -38,12 +38,6 @@ CREATE TABLE `s_bill` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户记账表';
 
 -- ----------------------------
--- Records of s_bill
--- ----------------------------
-BEGIN;
-COMMIT;
-
--- ----------------------------
 -- Table structure for s_bill_month_sta
 -- ----------------------------
 DROP TABLE IF EXISTS `s_bill_month_sta`;
@@ -58,12 +52,6 @@ CREATE TABLE `s_bill_month_sta` (
   `last_cost` int(20) NOT NULL DEFAULT '0' COMMENT '上次统计费用，单位分',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='按分类统计每月记账数据，不包括本月';
-
--- ----------------------------
--- Records of s_bill_month_sta
--- ----------------------------
-BEGIN;
-COMMIT;
 
 -- ----------------------------
 -- Table structure for s_bill_real_sta
@@ -84,12 +72,6 @@ CREATE TABLE `s_bill_real_sta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='按分类统计本周本月今年的记账数据';
 
 -- ----------------------------
--- Records of s_bill_real_sta
--- ----------------------------
-BEGIN;
-COMMIT;
-
--- ----------------------------
 -- Table structure for s_bill_week_sta
 -- ----------------------------
 DROP TABLE IF EXISTS `s_bill_week_sta`;
@@ -106,12 +88,6 @@ CREATE TABLE `s_bill_week_sta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='按分类统计每周记账数据，不包括本周';
 
 -- ----------------------------
--- Records of s_bill_week_sta
--- ----------------------------
-BEGIN;
-COMMIT;
-
--- ----------------------------
 -- Table structure for s_bill_year_sta
 -- ----------------------------
 DROP TABLE IF EXISTS `s_bill_year_sta`;
@@ -125,12 +101,6 @@ CREATE TABLE `s_bill_year_sta` (
   `last_cost` int(20) NOT NULL DEFAULT '0' COMMENT '上次统计费用，单位分',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='按分类统计每年记账数据，不包括今年';
-
--- ----------------------------
--- Records of s_bill_year_sta
--- ----------------------------
-BEGIN;
-COMMIT;
 
 -- ----------------------------
 -- Table structure for s_category
@@ -151,28 +121,16 @@ CREATE TABLE `s_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='分类表';
 
 -- ----------------------------
--- Records of s_category
+-- Table structure for s_set_user_platform
 -- ----------------------------
-BEGIN;
-COMMIT;
-
--- ----------------------------
--- Table structure for s_set_users_platform
--- ----------------------------
-DROP TABLE IF EXISTS `s_set_users_platform`;
-CREATE TABLE `s_set_users_platform` (
+DROP TABLE IF EXISTS `s_set_user_platform`;
+CREATE TABLE `s_set_user_platform` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id',
   `user_id` int(11) NOT NULL COMMENT '用户id',
   `type` varchar(10) NOT NULL COMMENT '第三方平台类型',
   `openid` varchar(64) NOT NULL COMMENT '第三方唯一标识',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户关联第三方平台表';
-
--- ----------------------------
--- Records of s_set_users_platform
--- ----------------------------
-BEGIN;
-COMMIT;
 
 -- ----------------------------
 -- Table structure for s_user
@@ -195,12 +153,6 @@ CREATE TABLE `s_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
 
 -- ----------------------------
--- Records of s_user
--- ----------------------------
-BEGIN;
-COMMIT;
-
--- ----------------------------
 -- Table structure for s_user_clock
 -- ----------------------------
 DROP TABLE IF EXISTS `s_user_clock`;
@@ -212,16 +164,10 @@ CREATE TABLE `s_user_clock` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户打卡记录表';
 
 -- ----------------------------
--- Records of s_user_clock
+-- Table structure for s_user_wx
 -- ----------------------------
-BEGIN;
-COMMIT;
-
--- ----------------------------
--- Table structure for s_users_wx
--- ----------------------------
-DROP TABLE IF EXISTS `s_users_wx`;
-CREATE TABLE `s_users_wx` (
+DROP TABLE IF EXISTS `s_user_wx`;
+CREATE TABLE `s_user_wx` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id',
   `user_id` int(11) NOT NULL COMMENT '用户id',
   `openid` varchar(64) NOT NULL COMMENT '用户唯一标识',
@@ -236,11 +182,5 @@ CREATE TABLE `s_users_wx` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `uni_users_wx_openid` (`openid`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='微信用户表';
-
--- ----------------------------
--- Records of s_users_wx
--- ----------------------------
-BEGIN;
-COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
